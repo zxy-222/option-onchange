@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    #zselect{
+      height: 34px;
+      width: 180px;
+      border-radius: 4px;
+    }
+    .selDiv{
+      margin-top: 20px;
+      overflow: hidden;
+    }
+    .selDiv>div{
+      float: left;
+      /* width:280px; */
+      margin-right:60px;
+
+    }  
+    .selDiv>div>select{
+      width: 150px;
+      height: 30px;
+      border-radius: 4px;
+    }
+    .selDiv>.third{overflow: hidden;}
+    .selDiv>.third>div{float: left;margin-right: 60px}
+    .selDiv>.third>div>select{
+      width: 150px;
+      height: 30px;
+      border-radius: 4px;
+    }
+    .second,.third{
+      display:none;
+    }
+    .second.active,.third.active{
+      display:block;
+    }
+  </style>
+</head>
+<body>
+  <select name="" id="zselect" onchange="func()">
+    <option value="选择年份">选择年份</option>
+    <option value="选择季份">选择季份</option>
+    <option value="选择月份">选择月份</option>
+  </select>
+  <div class="selDiv">
+    <div class="first">
+      <span>选择年份</span>
+      <select name="" id=""></select>
+    </div>
+    <div class="second">
+        <span>选择季份</span>
+        <select name="" id=""></select>
+    </div>
+    <div class="third">
+       <div>
+          <span>开始月份</span>
+        <select name="" id=""></select>
+       </div>
+       <div>
+          <span>结束月份</span>
+        <select name="" id=""></select>
+       </div>
+    </div>
+  </div>
+</body>
+<script src="./jquery-1.9.1.min.js"></script>
+<script>
+function func(){  
+  //获取被选中的option标签  
+  var index = $('#zselect>option:selected').index();  
+  console.log(index)
+  $(".selDiv>div:eq("+index+")").addClass("active").siblings().removeClass("active");
+  console.log($(".selDiv>div:eq("+index+")"))
+ }  
+</script>
+</html>
